@@ -23,6 +23,7 @@ requirements:
     - python
     - pyyaml
     - typing-extensions
+    - six
 
 test:
   imports:
