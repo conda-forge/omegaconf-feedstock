@@ -10,7 +10,6 @@ source:
   sha256: b62ad9288272c601a5a6a31f7de0efbc26568ec6a42ecd485b0320fd913b8953
 
 build:
-  noarch: python
   number: 0
   script: "{{ PYTHON }} -m pip install . -vv"
 
@@ -22,7 +21,7 @@ requirements:
   run:
     - python >=3.6
     - pyyaml
-    - dataclasses
+    - dataclasses  # [py36]
     - typing_extensions
 
 test:
