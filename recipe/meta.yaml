@@ -1,37 +1,38 @@
 {% set name = "omegaconf" %}
-{% set version = "1.4.1" %}
+{% set version = "2.0.0rc26" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/omry/{{ name|lower }}/archive/{{ version }}.tar.gz
-  sha256: f9078df667ed61ec4852c3d20bf7ffa0fbfc3c941f4a95dc71f4ce96d0494ccd
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: b62ad9288272c601a5a6a31f7de0efbc26568ec6a42ecd485b0320fd913b8953
 
 build:
   noarch: python
-  number: 2
+  number: 0
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
-    - python
+    - python >=3.6
     - pip
     - pytest-runner
   run:
-    - python
+    - python >=3.6
     - pyyaml
-    - six
+    - dataclasses
+    - typing_extensions
 
 test:
   imports:
     - omegaconf
   requires:
     - pytest
+    - pytest-mock
   source_files:
     - tests
-    - pytest.ini
   commands:
     - pytest tests
 
@@ -53,3 +54,4 @@ about:
 extra:
   recipe-maintainers:
     - mdraw
+    - omry

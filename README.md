@@ -121,4 +121,5 @@ Feedstock Maintainers
 =====================
 
 * [@mdraw](https://github.com/mdraw/)
+* [@omry](https://github.com/omry/)
 
