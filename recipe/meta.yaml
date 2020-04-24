@@ -11,17 +11,18 @@ source:
 
 build:
   number: 0
+  skip: True  # [py2k and py==34 and py==35]
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
     - pytest-runner
   run:
-    - python >=3.6
+    - python
     - pyyaml
-    - dataclasses  # [py36]
+    - dataclasses  # [py==36]
     - typing_extensions
 
 test:
