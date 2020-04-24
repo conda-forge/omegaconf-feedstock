@@ -1,5 +1,5 @@
 {% set name = "omegaconf" %}
-{% set version = "2.0.0rc26" %}
+{% set version = "2.0.0rc27" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b62ad9288272c601a5a6a31f7de0efbc26568ec6a42ecd485b0320fd913b8953
+  sha256: a85d2a42c0c388cfd6e764c7d70242ee9389fa02280651a49bf295455f807184
 
 build:
   number: 0
