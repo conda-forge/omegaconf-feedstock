@@ -1,5 +1,5 @@
 {% set name = "omegaconf" %}
-{% set version = "1.4.1" %}
+{% set version = "2.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/omry/{{ name|lower }}/archive/{{ version }}.tar.gz
-  sha256: f9078df667ed61ec4852c3d20bf7ffa0fbfc3c941f4a95dc71f4ce96d0494ccd
+  sha256: ce7bc44840c7bbe3c575a6095db98446d9f7686196bf606b46b532531448a296
 
 build:
   noarch: python
-  number: 2
-  script: "{{ PYTHON }} -m pip install . -vv"
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -40,7 +40,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'Flexible python configuration system'
+  summary: Flexible python configuration system
 
   description: |
     OmegaConf is a hierarchical configuration system, with support for merging
