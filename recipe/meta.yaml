@@ -1,18 +1,18 @@
 {% set name = "omegaconf" %}
-{% set version = "1.4.1" %}
+{% set version = "2.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/omry/{{ name|lower }}/archive/{{ version }}.tar.gz
-  sha256: f9078df667ed61ec4852c3d20bf7ffa0fbfc3c941f4a95dc71f4ce96d0494ccd
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: af3505f910300e3ef95b4e95c031e8f4b798834ad81e2f062a70488c4d6a76a7
 
 build:
-  noarch: python
-  number: 2
-  script: "{{ PYTHON }} -m pip install . -vv"
+  number: 0
+  skip: True  # [py2k and py==34 and py==35]
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -22,16 +22,17 @@ requirements:
   run:
     - python
     - pyyaml
-    - six
+    - dataclasses  # [py==36]
+    - typing_extensions
 
 test:
   imports:
     - omegaconf
   requires:
     - pytest
+    - pytest-mock
   source_files:
     - tests
-    - pytest.ini
   commands:
     - pytest tests
 
@@ -40,7 +41,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'Flexible python configuration system'
+  summary: Flexible python configuration system
 
   description: |
     OmegaConf is a hierarchical configuration system, with support for merging
@@ -53,3 +54,4 @@ about:
 extra:
   recipe-maintainers:
     - mdraw
+    - omry
