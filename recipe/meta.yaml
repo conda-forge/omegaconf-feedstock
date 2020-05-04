@@ -1,5 +1,5 @@
 {% set name = "omegaconf" %}
-{% set version = "2.0.0rc27" %}
+{% set version = "2.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: a85d2a42c0c388cfd6e764c7d70242ee9389fa02280651a49bf295455f807184
+  sha256: ce7bc44840c7bbe3c575a6095db98446d9f7686196bf606b46b532531448a296
 
 build:
   number: 0
   skip: True  # [py2k and py==34 and py==35]
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -41,7 +41,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'Flexible python configuration system'
+  summary: Flexible python configuration system
 
   description: |
     OmegaConf is a hierarchical configuration system, with support for merging
