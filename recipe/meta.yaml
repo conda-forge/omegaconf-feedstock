@@ -6,8 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: a08aec03a63c66449b550b85d70238f4dee9c6c4a0541d6a98845dcfeb12439d
+  url: https://github.com/omry/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 0168f962822b7059c7553c4346541596ea48c0b542628d41a348a12eeaf971ff
 
 build:
   number: 0
