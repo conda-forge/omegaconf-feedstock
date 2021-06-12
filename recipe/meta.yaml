@@ -41,7 +41,8 @@ test:
   source_files:
     - tests
   commands:
-    - pytest tests
+    # Skip pydev plugin tests because currently there is no pydev package on conda-forge
+    - pytest tests -k 'not pydev_resolver_plugin'
 
 about:
   home: https://github.com/omry/omegaconf
