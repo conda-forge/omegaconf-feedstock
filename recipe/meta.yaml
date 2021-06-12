@@ -22,9 +22,11 @@ requirements:
     - python
     - pip
     - pytest-runner
+    - antlr =4.8
   run:
     - python
     - pyyaml
+    - antlr-python-runtime =4.8
     - dataclasses  # [py==36]
     - typing_extensions
 
