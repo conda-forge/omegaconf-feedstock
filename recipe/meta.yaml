@@ -35,7 +35,9 @@ test:
     - omegaconf
   requires:
     - pytest
+    - pytest-benchmark
     - pytest-mock
+    - pytest-lazy-fixture
   source_files:
     - tests
   commands:
