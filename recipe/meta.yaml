@@ -23,6 +23,7 @@ requirements:
     - python
     - pip
     - pytest-runner
+    - openjdk
   run:
     - python
     - pyyaml
