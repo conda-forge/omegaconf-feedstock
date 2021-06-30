@@ -8,7 +8,9 @@ package:
 source:
   url: https://github.com/omry/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 0168f962822b7059c7553c4346541596ea48c0b542628d41a348a12eeaf971ff
-  patches: pydev.patch
+  patches:
+    - pydev.patch
+    - pypy.patch
 
 build:
   number: 0
