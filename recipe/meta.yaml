@@ -25,7 +25,7 @@ requirements:
     - python
     - pip
     - pytest-runner
-    - antlr
+    - openjdk
   run:
     - python
     - pyyaml
