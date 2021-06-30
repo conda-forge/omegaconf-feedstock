@@ -21,11 +21,11 @@ requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - antlr
   host:
     - python
     - pip
     - pytest-runner
-    - antlr
   run:
     - python
     - pyyaml
