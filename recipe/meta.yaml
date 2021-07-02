@@ -9,7 +9,6 @@ source:
   url: https://github.com/omry/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 0168f962822b7059c7553c4346541596ea48c0b542628d41a348a12eeaf971ff
   patches:
-    - pydev.patch
     - pypy.patch
 
 build:
@@ -44,7 +43,7 @@ test:
   source_files:
     - tests
   commands:
-    - pytest tests
+    - pytest --ignore tests/test_pydev_resolver_plugin.py
 
 about:
   home: https://github.com/omry/omegaconf
