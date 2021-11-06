@@ -12,7 +12,7 @@ source:
     - pypy.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py2k and py==34 and py==35]
   script: {{ PYTHON }} -m pip install . -vv
 
