@@ -40,6 +40,7 @@ test:
     - pytest-benchmark
     - pytest-mock
     - pytest-lazy-fixture
+    - pip
   source_files:
     - tests
   commands:
