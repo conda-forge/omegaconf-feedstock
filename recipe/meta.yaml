@@ -12,15 +12,16 @@ source:
     - pypy.patch
 
 build:
-  number: 1
-  skip: true  # [py2k and py==34 and py==35]
+  number: 2
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - antlr
+    # Minor version must match between antlr and antlr-python-runtime
+    # https://github.com/omry/omegaconf/issues/798
+    - antlr 4.8
   host:
     - python
     - pip
@@ -28,8 +29,7 @@ requirements:
   run:
     - python
     - pyyaml
-    - antlr-python-runtime
-    - dataclasses  # [py==36]
+    - antlr-python-runtime 4.8
     - typing_extensions
 
 test:
@@ -43,6 +43,7 @@ test:
   source_files:
     - tests
   commands:
+    - pip check
     - pytest --ignore tests/test_pydev_resolver_plugin.py
 
 about:
