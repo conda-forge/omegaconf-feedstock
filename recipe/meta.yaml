@@ -10,6 +10,8 @@ source:
   sha256: 1c090255e303cd72af546fd6a433722edcd5ff30edf915405e6f56d28fb02b36
   patches:
     - pypy.patch
+    # https://github.com/omry/omegaconf/issues/798
+    - antlr_version_4.9.patch
 
 build:
   number: 2
@@ -21,7 +23,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     # Minor version must match between antlr and antlr-python-runtime
     # https://github.com/omry/omegaconf/issues/798
-    - antlr 4.8
+    - antlr 4.9
   host:
     - python
     - pip
@@ -29,7 +31,7 @@ requirements:
   run:
     - python
     - pyyaml
-    - antlr-python-runtime 4.8
+    - antlr-python-runtime 4.9
     - typing_extensions
 
 test:
