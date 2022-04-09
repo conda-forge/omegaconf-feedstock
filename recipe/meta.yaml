@@ -14,7 +14,7 @@ source:
     - antlr_version_4.9.patch
 
 build:
-  number: 2
+  number: 3
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
