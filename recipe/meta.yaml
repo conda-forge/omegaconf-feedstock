@@ -1,5 +1,5 @@
 {% set name = "omegaconf" %}
-{% set version = "2.1.1" %}
+{% set version = "2.1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://github.com/omry/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 1c090255e303cd72af546fd6a433722edcd5ff30edf915405e6f56d28fb02b36
+  sha256: ef5ff5ece0a17313f125c4ffc0d2a34e07483906f43492f0ad2713f9a9696be8
   patches:
     - pypy.patch
     # https://github.com/omry/omegaconf/issues/798
     - antlr_version_4.9.patch
 
 build:
-  number: 3
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
