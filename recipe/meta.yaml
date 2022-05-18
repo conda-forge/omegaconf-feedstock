@@ -1,5 +1,5 @@
 {% set name = "omegaconf" %}
-{% set version = "2.1.2" %}
+{% set version = "2.2.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/omry/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: ef5ff5ece0a17313f125c4ffc0d2a34e07483906f43492f0ad2713f9a9696be8
+  sha256: d55e62f83dbab233970687d7361539e44004073c7dc6ce4f4b151710e5feb146
   patches:
     - pypy.patch
     # https://github.com/omry/omegaconf/issues/798
