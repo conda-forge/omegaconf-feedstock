@@ -1,4 +1,3 @@
-# test
 
 {% set name = "omegaconf" %}
 {% set version = "2.2.2" %}
