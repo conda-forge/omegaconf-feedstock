@@ -404,6 +404,7 @@ Feedstock Maintainers
 =====================
 
 * [@benjaminrwilson](https://github.com/benjaminrwilson/)
+* [@maresb](https://github.com/maresb/)
 * [@mdraw](https://github.com/mdraw/)
 * [@omry](https://github.com/omry/)
 
