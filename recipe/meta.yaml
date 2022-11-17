@@ -16,17 +16,12 @@ build:
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
-  build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    # Minor version must match between antlr and antlr-python-runtime
-    # https://github.com/omry/omegaconf/issues/798
-    - antlr 4.9
   host:
-    - python
+    - python >=3.6
     - pip
+    - antlr 4.9
   run:
-    - python
+    - python >=3.6
     - pyyaml
     - antlr-python-runtime 4.9
     - typing_extensions
