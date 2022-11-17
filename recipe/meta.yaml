@@ -6,9 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/omry/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 9586b6623d4abf514979612f987261971a58da2dc7a9224bebd017848c9ad80a
-
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/omegaconf-{{ version }}.tar.gz
+  sha256: 59ff9fba864ffbb5fb710b64e8a9ba37c68fa339a2e2bb4f1b648d6901552523
 
 build:
   noarch: python
