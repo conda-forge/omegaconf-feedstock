@@ -17,11 +17,11 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python >=3.6,<3.11
     - pip
     - antlr 4.9
   run:
-    - python >=3.6
+    - python >=3.6,<3.11
     - pyyaml
     - antlr-python-runtime 4.9
     - typing_extensions
@@ -35,6 +35,7 @@ test:
     - pytest-mock
     - pytest-lazy-fixture
     - pip
+    # Temporary pin <https://github.com/conda-forge/omegaconf-feedstock/pull/40#issuecomment-1294669062>
   source_files:
     - tests
   commands:
