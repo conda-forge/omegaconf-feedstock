@@ -16,11 +16,11 @@ build:
 
 requirements:
   host:
-    - python >=3.6,<3.11
+    - python >=3.7,<3.11
     - pip
     - antlr 4.9
   run:
-    - python >=3.6,<3.11
+    - python >=3.7,<3.11
     - pyyaml
     - antlr-python-runtime 4.9
     - typing_extensions
