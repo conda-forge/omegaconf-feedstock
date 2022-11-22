@@ -6,26 +6,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/omry/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 9586b6623d4abf514979612f987261971a58da2dc7a9224bebd017848c9ad80a
-
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/omegaconf-{{ version }}.tar.gz
+  sha256: 59ff9fba864ffbb5fb710b64e8a9ba37c68fa339a2e2bb4f1b648d6901552523
 
 build:
+  noarch: python
   number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
-  build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    # Minor version must match between antlr and antlr-python-runtime
-    # https://github.com/omry/omegaconf/issues/798
-    - antlr 4.9
   host:
-    - python
+    - python >=3.7,<3.11
     - pip
+    - antlr 4.9
   run:
-    - python
+    - python >=3.7,<3.11
     - pyyaml
     - antlr-python-runtime 4.9
     - typing_extensions
@@ -39,6 +34,7 @@ test:
     - pytest-mock
     - pytest-lazy-fixture
     - pip
+    # Temporary pin <https://github.com/conda-forge/omegaconf-feedstock/pull/40#issuecomment-1294669062>
   source_files:
     - tests
   commands:
