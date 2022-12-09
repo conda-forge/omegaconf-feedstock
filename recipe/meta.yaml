@@ -39,7 +39,7 @@ test:
     - tests
   commands:
     - pip check
-    - pytest --ignore tests/test_pydev_resolver_plugin.py --ignore tests\structured_conf\test_structured_config.py --ignore tests\test_utils.py
+    - pytest --ignore tests/test_pydev_resolver_plugin.py
 
 about:
   home: https://github.com/omry/omegaconf
