@@ -1,5 +1,5 @@
 {% set name = "omegaconf" %}
-{% set version = "2.2.3" %}
+{% set version = "2.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/omegaconf-{{ version }}.tar.gz
-  sha256: 59ff9fba864ffbb5fb710b64e8a9ba37c68fa339a2e2bb4f1b648d6901552523
+  sha256: d5d4b6d29955cc50ad50c46dc269bcd92c6e00f5f90d23ab5fee7bfca4ba4cc7
 
 build:
   noarch: python
@@ -16,12 +16,12 @@ build:
 
 requirements:
   host:
-    - python >=3.7,<3.11
+    - python >=3.7
     - pip
     - antlr 4.9
   run:
-    - python >=3.7,<3.11
-    - pyyaml
+    - python >=3.7
+    - pyyaml >=5.1.0
     - antlr-python-runtime 4.9
     - typing_extensions
 
@@ -39,7 +39,7 @@ test:
     - tests
   commands:
     - pip check
-    - pytest --ignore tests/test_pydev_resolver_plugin.py --ignore tests\structured_conf\test_structured_config.py --ignore tests\test_utils.py
+    - pytest --ignore tests/test_pydev_resolver_plugin.py
 
 about:
   home: https://github.com/omry/omegaconf
