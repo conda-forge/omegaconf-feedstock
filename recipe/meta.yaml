@@ -21,7 +21,7 @@ requirements:
     - antlr 4.9
   run:
     - python >=3.7,<3.11
-    - pyyaml
+    - pyyaml >=5.1.0
     - antlr-python-runtime 4.9
     - typing_extensions
 
