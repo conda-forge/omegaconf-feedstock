@@ -17,6 +17,7 @@ build:
 requirements:
   host:
     - python {{ python_min }}
+    - setuptools
     - pip
     - antlr 4.9
   run:
