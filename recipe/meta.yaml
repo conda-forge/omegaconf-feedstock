@@ -12,7 +12,7 @@ source:
 build:
   noarch: python
   number: 1
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
@@ -24,7 +24,6 @@ requirements:
     - python >={{ python_min }}
     - pyyaml >=5.1.0
     - antlr-python-runtime 4.9
-    - typing_extensions
 
 test:
   imports:
@@ -35,13 +34,14 @@ test:
     - pytest-mock
     - pytest-lazy-fixture
     - pip
-    # Temporary pin <https://github.com/conda-forge/omegaconf-feedstock/pull/40#issuecomment-1294669062>
     - python {{ python_min }}
   source_files:
     - tests
   commands:
-    - pip check
     - pytest --ignore tests/test_pydev_resolver_plugin.py
+    # Work around <https://github.com/conda-forge/pytest-lazy-fixture-feedstock/issues/13>
+    - pip uninstall -y pytest-lazy-fixture
+    - pip check
 
 about:
   home: https://github.com/omry/omegaconf
