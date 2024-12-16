@@ -29,6 +29,7 @@ test:
   imports:
     - omegaconf
   requires:
+    - attrs
     - pytest
     - pytest-benchmark
     - pytest-mock
