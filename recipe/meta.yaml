@@ -30,7 +30,8 @@ test:
     - omegaconf
   requires:
     - attrs
-    - pytest
+    # Work around <https://github.com/TvoroG/pytest-lazy-fixture/issues/65>
+    - pytest <8
     - pytest-benchmark
     - pytest-mock
     - pytest-lazy-fixture
