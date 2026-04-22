@@ -6,40 +6,44 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/omegaconf-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/omegaconf-{{ version }}.tar.gz
   sha256: d5d4b6d29955cc50ad50c46dc269bcd92c6e00f5f90d23ab5fee7bfca4ba4cc7
 
 build:
   noarch: python
-  number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  number: 1
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
+    - setuptools
     - pip
     - antlr 4.9
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - pyyaml >=5.1.0
     - antlr-python-runtime 4.9
-    - typing_extensions
 
 test:
   imports:
     - omegaconf
   requires:
-    - pytest
+    - attrs
+    # Work around <https://github.com/TvoroG/pytest-lazy-fixture/issues/65>
+    - pytest <8
     - pytest-benchmark
     - pytest-mock
     - pytest-lazy-fixture
     - pip
-    # Temporary pin <https://github.com/conda-forge/omegaconf-feedstock/pull/40#issuecomment-1294669062>
+    - python {{ python_min }}
   source_files:
     - tests
   commands:
-    - pip check
     - pytest --ignore tests/test_pydev_resolver_plugin.py
+    # Work around <https://github.com/conda-forge/pytest-lazy-fixture-feedstock/issues/13>
+    - pip uninstall -y pytest-lazy-fixture
+    - pip check
 
 about:
   home: https://github.com/omry/omegaconf
