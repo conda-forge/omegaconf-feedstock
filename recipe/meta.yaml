@@ -1,13 +1,13 @@
 {% set name = "omegaconf" %}
-{% set version = "2.3.0" %}
+{% set version = "2.3.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/omegaconf-{{ version }}.tar.gz
-  sha256: d5d4b6d29955cc50ad50c46dc269bcd92c6e00f5f90d23ab5fee7bfca4ba4cc7
+  url: https://files.pythonhosted.org/packages/ce/3d/e4b57b8d9008c6ebe0d5eff901f91d5700cf7bdb8c8863df817463a7fd5e/omegaconf-{{ version }}.tar.gz
+  sha256: e5e7de64aeebeddaf8e6d3f7a783b32ac2a01c0fbd9c878012caecb891a1f42a
 
 build:
   noarch: python
