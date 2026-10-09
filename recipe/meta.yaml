@@ -1,13 +1,13 @@
 {% set name = "omegaconf" %}
-{% set version = "2.3.1" %}
+{% set version = "2.4.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://files.pythonhosted.org/packages/ce/3d/e4b57b8d9008c6ebe0d5eff901f91d5700cf7bdb8c8863df817463a7fd5e/omegaconf-{{ version }}.tar.gz
-  sha256: e5e7de64aeebeddaf8e6d3f7a783b32ac2a01c0fbd9c878012caecb891a1f42a
+  url: https://files.pythonhosted.org/packages/cc/10/1cabf3188a4d9684a06568c7fd76f9536eede625733c8399cf1f5337b83e/omegaconf-{{ version }}.tar.gz
+  sha256: 7e219a70bea371da250285b9c01c7db027bc421722799c2cc4ff14bc4a2a753b
 
 build:
   noarch: python
