@@ -2,7 +2,7 @@ build_platform:
   osx_arm64: osx_64
 conda_forge_output_validation: true
 github:
-  branch_name: main
+  branch_name: 2.3_branch
   tooling_branch_name: main
 provider:
   linux_aarch64: default
@@ -10,3 +10,4 @@ provider:
 conda_build:
   pkg_format: '2'
 test: native_and_emulated
+upload_on_branch: 2.3_branch
