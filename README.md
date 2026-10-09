@@ -1,7 +1,7 @@
 About omegaconf-feedstock
 =========================
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/omegaconf-feedstock/blob/main/LICENSE.txt)
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/omegaconf-feedstock/blob/2.4_branch/LICENSE.txt)
 
 Home: https://github.com/hydra-ecosystem/omegaconf
 
@@ -27,7 +27,7 @@ Current build status
     <td>All platforms:</td>
     <td>
       <a href="https://github.com/conda-forge/omegaconf-feedstock/actions/workflows/conda-build.yml">
-        <img src="https://github.com/conda-forge/omegaconf-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
+        <img src="https://github.com/conda-forge/omegaconf-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=2.4_branch">
       </a>
     </td>
   </tr>
