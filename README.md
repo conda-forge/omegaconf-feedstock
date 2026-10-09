@@ -3,15 +3,15 @@ About omegaconf-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/omegaconf-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/omry/omegaconf
+Home: https://github.com/hydra-ecosystem/omegaconf
 
 Package license: BSD-3-Clause
 
 Summary: Flexible python configuration system
 
-Development: https://github.com/omry/omegaconf
+Development: https://github.com/hydra-ecosystem/omegaconf
 
-Documentation: https://omegaconf.readthedocs.io/
+Documentation: https://omegaconf.cli.dev/
 
 OmegaConf is a hierarchical configuration system, with support for merging
 configurations from multiple sources (YAML config files,

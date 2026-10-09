@@ -1,5 +1,6 @@
 {% set name = "omegaconf" %}
 {% set version = "2.4.0" %}
+{% set python_min = "3.10" %}
 
 package:
   name: {{ name|lower }}
@@ -12,42 +13,47 @@ source:
 build:
   noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
+  build:
+    # The build regenerates the parsers with the bundled ANTLR jar.
+    - openjdk
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
     - setuptools
-    - antlr 4.9
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - pyyaml >=5.1.0
-    - antlr-python-runtime 4.9
-    - typing_extensions
 
 test:
   imports:
     - omegaconf
   requires:
-    - python 3.11.*
+    - python {{ python_min }}
     - attrs
-    - pytest <8
+    - pytest
     - pytest-benchmark
     - pytest-mock
+    - typing_extensions
     - pip
-    # Temporary pin <https://github.com/conda-forge/omegaconf-feedstock/pull/40#issuecomment-1294669062>
   source_files:
     - tests
+    - pyproject.toml
   commands:
     - pip check
-    - pytest --ignore tests/test_pydev_resolver_plugin.py
+    # These test upstream CI, release tooling, and the website; their inputs
+    # are not included in the PyPI source distribution.
+    - pytest tests --ignore-glob='tests/test_dependency_audit*.py' --ignore=tests/test_release_workflow.py --ignore-glob='tests/test_website*.py'
 
 about:
-  home: https://github.com/omry/omegaconf
+  home: https://github.com/hydra-ecosystem/omegaconf
   license: BSD-3-Clause
   license_family: BSD
-  license_file: LICENSE
+  license_file:
+    - LICENSE
+    - ATTRIBUTION/LICENSE-antlr4
   summary: Flexible python configuration system
 
   description: |
@@ -55,8 +61,8 @@ about:
     configurations from multiple sources (YAML config files,
     dataclasses/objects and CLI arguments) providing a consistent API
     regardless of how the configuration was created.
-  doc_url: https://omegaconf.readthedocs.io/
-  dev_url: https://github.com/omry/omegaconf
+  doc_url: https://omegaconf.cli.dev/
+  dev_url: https://github.com/hydra-ecosystem/omegaconf
 
 extra:
   recipe-maintainers:
