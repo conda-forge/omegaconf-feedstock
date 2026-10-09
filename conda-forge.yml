@@ -10,3 +10,13 @@ provider:
 conda_build:
   pkg_format: '2'
 test: native_and_emulated
+bot:
+  abi_migration_branches:
+    - 2.3_branch
+    - 2.4_branch
+  version_updates:
+    skip: true
+github_actions:
+  upload_packages: false
+azure:
+  upload_packages: false
