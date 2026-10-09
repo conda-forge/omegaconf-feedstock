@@ -34,7 +34,10 @@ test:
     - python {{ python_min }}
     - attrs
     - pytest
-    - pytest-benchmark
+    # Temporary pin: pytest-benchmark 5.3.0 fails `pip check` because its wheel
+    # metadata requires py-cpuinfo2, which is not packaged on conda-forge.
+    # <https://github.com/conda-forge/pytest-benchmark-feedstock/issues/34>
+    - pytest-benchmark <5.3
     - pytest-mock
     - typing_extensions
     - pip
