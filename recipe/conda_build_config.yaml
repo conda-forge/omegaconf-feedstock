@@ -1,0 +1,3 @@
+# Keep this build-only recipe's existing Python minimum independent of global pinning.
+python_min:
+  - "3.7"
