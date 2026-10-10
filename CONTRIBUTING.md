@@ -21,16 +21,51 @@ this minimum even when conda-forge's default build variant moves forward.
 2. Update `recipe/meta.yaml` to the published release's version, source URL,
    checksum, and dependencies. Reset the build number to zero for a new version;
    increment it when rebuilding the same version.
-3. Rerender with `conda smithy rerender` and validate locally with
+3. Check the publication target in `recipe/conda_build_config.yaml`: stable
+   releases use `conda-forge main`; release candidates use
+   `conda-forge omegaconf_rc`.
+4. Rerender with `conda smithy rerender` and validate locally with
    `python build-locally.py linux_64_`.
-4. Open a PR from your fork targeting that same release branch. Check that CI
+5. Open a PR from your fork targeting that same release branch. Check that CI
    passes before merging. Do not target `main` for releases or recipe rebuilds.
 
 Each release branch sets `upload_on_branch` to its own name. After a release PR
-merges, the branch build uploads to the shared `conda-forge` channel. Versions
-and build numbers distinguish the artifacts; branches do not create separate
-channels. Submit changes from forks rather than pushing directly to the
-feedstock. Updates to `main` are not automatically copied to release branches.
+merges, the branch build uploads to its configured channel target. Stable
+releases use the shared `conda-forge` channel; release candidates use the
+package-specific `omegaconf_rc` label. Versions, build numbers, and labels
+distinguish the artifacts; branches do not inherently create separate channels.
+Submit changes from forks rather than pushing directly to the feedstock. Updates to `main` are not automatically copied to release branches.
+
+## Prerelease publication
+
+Hydra and OmegaConf follow the same prerelease policy: a release candidate
+builds from its matching release-line branch and publishes only to its
+package-specific `_rc` label. For OmegaConf this is `omegaconf_rc`; Hydra uses
+`hydra-core_rc`. Stable releases build from those same branches and publish
+to the normal channel. This follows the
+[conda-forge prerelease guidance](https://conda-forge.org/docs/maintainer/knowledge_base/#pre-release-builds).
+
+For a future OmegaConf release candidate, set the following in
+`recipe/conda_build_config.yaml` on the appropriate release branch:
+
+```yaml
+channel_targets:
+  - conda-forge omegaconf_rc
+```
+
+Rerender and verify that `.ci_support` contains that target. Testers can opt
+into the prerelease channel with `-c conda-forge/label/omegaconf_rc -c conda-forge`
+and an explicit release-candidate version.
+
+When preparing the stable release, update the version, published source,
+checksum, and build number, and switch `channel_targets` to
+`[conda-forge main]` in the same PR. Keep `upload_on_branch` pointing at the
+release-line branch and rerender before merging. This changes the target for
+new builds; it does not relabel previously published packages.
+
+The current stable recipes already target the normal channel. Applying this
+policy to a future prerelease requires the recipe change above; documentation
+alone does not change an upload target.
 
 ## Bot migrations and branch lifecycle
 
