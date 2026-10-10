@@ -60,7 +60,8 @@ jobs:
             DOCKER_IMAGE: {{ data.config["docker_image"][-1] }}
         {%- endif %}
             STORE_BUILD_ARTIFACTS: {{ data.store_build_artifacts is true }}
-            UPLOAD_PACKAGES: {{ data.upload }}
+            {#- Keep the case-sensitive string expected by the upload scripts. #}
+            UPLOAD_PACKAGES: "{{ data.upload }}"
             EMULATED: {{ data.build_platform != data.platform }}
         {%- if data.build_platform.startswith("win") %}
             build_platform: {{ data.build_platform }}
