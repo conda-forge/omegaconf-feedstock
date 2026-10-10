@@ -10,9 +10,11 @@ using the names of [OmegaConf's upstream release branches](https://github.com/hy
 | `2.4_branch` | 2.4.x | All 2.4 releases and rebuilds, including 2.4.0. |
 
 The branches contain conda recipes for published source archives; they do not
-automatically synchronize with upstream Git branches. OmegaConf 2.4 packages
-support Python 3.10 and newer. The explicit `python_min` in that recipe preserves
-this minimum even when conda-forge's default build variant moves forward.
+automatically synchronize with upstream Git branches. Release-line recipes pin
+`python_min` in `recipe/conda_build_config.yaml`: 3.7 for OmegaConf 2.3 and 3.10
+for OmegaConf 2.4. These pins preserve the supported Python ranges when
+conda-forge's default build variant moves forward. Keep them when applying bot
+migrations; rerender after changing a recipe variant configuration.
 
 ## Updating a release line
 
