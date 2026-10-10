@@ -34,7 +34,6 @@ test:
     - python {{ python_min }}
     - attrs
     - pytest
-    - pytest-benchmark
     - pytest-mock
     - typing_extensions
     - pip
