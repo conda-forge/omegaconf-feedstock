@@ -1,0 +1,4 @@
+# Preserve the Python range supported by this OmegaConf release line.
+# Do not inherit a newer minimum from conda-forge global pinning.
+python_min:
+  - "3.7"
