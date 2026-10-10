@@ -21,10 +21,12 @@ this minimum even when conda-forge's default build variant moves forward.
 2. Update `recipe/meta.yaml` to the published release's version, source URL,
    checksum, and dependencies. Reset the build number to zero for a new version;
    increment it when rebuilding the same version.
-3. Check the publication target in `recipe/conda_build_config.yaml`: stable
-   releases use `conda-forge main`; release candidates use
-   `conda-forge omegaconf_rc`.
-4. Rerender with `conda smithy rerender` and validate locally with
+3. Check the `channel_targets` override in `recipe/conda_build_config.yaml`
+   against the intended publication label. Stable inputs currently omit this
+   key and inherit `conda-forge main`; release candidates must set it
+   explicitly to `conda-forge omegaconf_rc`.
+4. Rerender with `conda smithy rerender`, verify the effective
+   `channel_targets` in generated `.ci_support`, and validate locally with
    `python build-locally.py linux_64_`.
 5. Open a PR from your fork targeting that same release branch. Check that CI
    passes before merging. Do not target `main` for releases or recipe rebuilds.
@@ -53,19 +55,22 @@ channel_targets:
   - conda-forge omegaconf_rc
 ```
 
-Rerender and verify that `.ci_support` contains that target. Testers can opt
-into the prerelease channel with `-c conda-forge/label/omegaconf_rc -c conda-forge`
-and an explicit release-candidate version.
+Rerender and verify that the effective `channel_targets` in generated
+`.ci_support` contains that target. Testers can opt into the prerelease
+channel with `-c conda-forge/label/omegaconf_rc -c conda-forge` and an
+explicit release-candidate version.
 
 When preparing the stable release, update the version, published source,
-checksum, and build number, and switch `channel_targets` to
-`[conda-forge main]` in the same PR. Keep `upload_on_branch` pointing at the
-release-line branch and rerender before merging. This changes the target for
-new builds; it does not relabel previously published packages.
+checksum, and build number. Stable inputs with no `channel_targets` override
+inherit `conda-forge main`; when promoting an RC to stable, replace the
+explicit `omegaconf_rc` override with `channel_targets: [conda-forge main]`
+in the same PR. Keep `upload_on_branch` pointing at the release-line branch,
+rerender, and verify the effective target in generated `.ci_support` before
+merging. This changes the target for new builds; it does not relabel
+previously published packages.
 
-The current stable recipes already target the normal channel. Applying this
-policy to a future prerelease requires the recipe change above; documentation
-alone does not change an upload target.
+Applying this policy to a future prerelease requires the recipe change above;
+documentation alone does not change an upload target.
 
 ## Bot migrations and branch lifecycle
 
